@@ -1,0 +1,9 @@
+/* Yet an other comment  */
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #f00;
+
+body {
+  font: 100% $font-stack;
+  background-color: $primary-color;
+}
