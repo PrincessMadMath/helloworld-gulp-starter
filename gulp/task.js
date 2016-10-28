@@ -1,16 +1,17 @@
 var gulp = require('gulp');
-var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
 var del = require('del');
 var sass = require('gulp-sass');
 var cssnano = require('gulp-cssnano');
+var gulpif = require('gulp-if');
 
 var config = require('./config');
 
 
 // Plugin to enable live-reload (https://www.browsersync.io/docs/gulp)
 var browserSync = require('browser-sync').create();
+
 
 /*************** Task definition ***************/
 
@@ -40,7 +41,6 @@ function cleanAsset() {
 function cleanBuild() {
   return del([config.paths.dist]);
 }
-
 
 
 /*************** Pre-compile function ***************/
@@ -86,6 +86,7 @@ function compileSass(){
     .pipe(gulp.dest(dest));
 }
 
+
 /*************** Build functions (make ready for production) ***************/
 
 function buildHtml(){
@@ -102,7 +103,7 @@ function buildCss() {
   var dest = config.paths.dist + config.paths.dest.css;
 
   return gulp.src(glob)
-    .pipe(cssnano())
+    .pipe(gulpif(config.run.css.cssnano, cssnano()))
     .pipe(gulp.dest(dest));
 }
 
@@ -120,10 +121,10 @@ function buildScript() {
   var dest = config.paths.dist + config.paths.dest.js;
 
   return gulp.src(glob)
-    .pipe(uglify())
-    .pipe(concat('all.min.js'))
+    .pipe(gulpif(config.run.js.uglify, uglify(config.plugin.js.uglify)))
     .pipe(gulp.dest(dest));
 }
+
 
 /*************** Watcher functions (change -> build) ***************/
 
