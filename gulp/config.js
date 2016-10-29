@@ -83,12 +83,24 @@ var plugin = {
             uglify: {
                 mangle: true
             }
+        },
+        lint: {
+            eslint: {
+                configFile: ".eslintrc",
+                fix: true
+            }
         }
     },
     development: {
         js: {
             uglify: {
+                
                 mangle: false
+            }
+        },
+        lint: {
+            eslint: {
+                configFile: ".dev.eslintrc",
             }
         }
     },

@@ -1,14 +1,19 @@
 var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var imagemin = require('gulp-imagemin');
-var del = require('del');
-var sass = require('gulp-sass');
-var cssnano = require('gulp-cssnano');
-var gulpif = require('gulp-if');
-
 var config = require('./config');
 
+/*** js plugins ***/
+var uglify = require('gulp-uglify');
 
+/*** style plugins ***/
+var sass = require('gulp-sass');
+var cssnano = require('gulp-cssnano');
+
+/*** image plugins ***/
+var imagemin = require('gulp-imagemin');
+
+/*** util plugins ***/
+var del = require('del');
+var gulpif = require('gulp-if');
 // Plugin to enable live-reload (https://www.browsersync.io/docs/gulp)
 var browserSync = require('browser-sync').create();
 
