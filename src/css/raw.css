@@ -1,7 +1,8 @@
 /* Very useful comment telling the next rule set the color of the header  */
 
 h1 {
-    width: 10px;
-    height: 10px;
-    color: #2ff;
+  display: flex;
+  width: 10px;
+  height: 10px;
+  color: #00f;
 }

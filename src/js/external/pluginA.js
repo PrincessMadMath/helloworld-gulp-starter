@@ -1,3 +1,5 @@
 function sayA() {
-    console.log("no");
+    //console.log("no");
 }
+
+sayA();
