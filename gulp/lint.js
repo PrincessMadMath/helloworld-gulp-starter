@@ -8,8 +8,8 @@ var eslint = require('gulp-eslint');
 /*** style tools ***/
 var postcss = require('gulp-postcss');
 
-/*** style lint ***/
 
+/*** style lint ***/
 var stylelint = require('stylelint')
 var syntax_scss = require('postcss-scss');
 var reporter = require('postcss-reporter');
@@ -19,9 +19,17 @@ var stylefmt = require('stylefmt');
 var sorting = require('postcss-sorting');
 
 
+/*** util ***/
+// We also use lint for formatting, if we must only overwrite if a changed was
+// made or else we have an infinite loop
+var changed = require('gulp-changed');
 
+
+gulp.task('lint', gulp.parallel(jsLint, cssLint, sassLint));
 gulp.task('lint:js', jsLint);
-gulp.task('lint:style', gulp.parallel(cssLint));
+gulp.task('lint:style', gulp.parallel(cssLint, sassLint));
+
+gulp.task('lint:watch', gulp.series('lint', watchLint));
 
 
 
@@ -35,6 +43,7 @@ function jsLint(){
         .pipe(eslint(config.plugin.lint.eslint))
         .pipe(eslint.format())
         .pipe(eslint.failAfterError())
+        .pipe(changed(dest))
         .pipe(gulp.dest(dest));
 }
 
@@ -58,8 +67,10 @@ function cssLint(){
 
     return gulp.src(glob)
     .pipe(postcss(processors))
+    .pipe(changed(dest))
     .pipe(gulp.dest(dest));
 }
+
 
 function sassLint(){
     var glob = config.prefixGlob(config.paths.src, config.paths.glob.sass);
@@ -69,5 +80,18 @@ function sassLint(){
     .pipe(postcss(processors, {
         syntax: syntax_scss
     }))
+    .pipe(changed(dest))
     .pipe(gulp.dest(dest));
+}
+
+
+// When a modification is done in the src folder, update the build
+function watchLint() {
+    var js_glob = config.prefixGlob(config.paths.src, config.paths.glob.js);
+    var sass_glob = config.prefixGlob(config.paths.src, config.paths.glob.sass);
+    var css_glob = config.prefixGlob(config.paths.src, config.paths.glob.css);
+
+    gulp.watch(js_glob, jsLint);
+    gulp.watch(css_glob, cssLint);
+    gulp.watch(sass_glob,  sassLint);
 }

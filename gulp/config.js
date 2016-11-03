@@ -4,29 +4,30 @@ var gutil = require('gulp-util')
 
 /*************** Path ***************/
 var paths = {
-  src: "src/",
-  temp: ".temp/",
-  dist: "build/",
-  glob: {
-    html: ['**/*.html'],
-    scss: ['scss/**/*.scss'],
-    css : ['css/**/*.css'],
-    js: ['js/**/*.js'],
-    images: ['img/**/*'],
-  },
-  dest: {
-    html: '',
-    css : 'css/',
-    js: 'js/',
-    images: 'img/',
-  },
+    src: "src/",
+    temp: ".temp/",
+    dist: "build/",
+    glob: {
+        html: ['**/*.html'],
+        sass: ['scss/**/*.scss'],
+        css : ['css/**/*.css'],
+        js: ['js/**/*.js'],
+        images: ['img/**/*'],
+    },
+    dest: {
+        html: '',
+        css : 'css/',
+        sass: 'scss/',
+        js: 'js/',
+        images: 'img/',
+    },
 }
 
 // Todo: this should but not calculated at runtime...
 function prefixGlob(prefix, glob){
-  return glob.map(function(el) { 
-    return prefix + el; 
-  })
+    return glob.map(function(el) { 
+        return prefix + el; 
+    })
 }
 
 /*************** Constants ***************/
@@ -53,9 +54,14 @@ var run = {
             uglify: false
         },
         css: {
-            cssnano: false
+            cssnano: false,
+            autoprefixer : true,
+        },
+        html: {
+            useref : false
         }
     },
+
     development: {
         js: {
             uglify: false
@@ -64,12 +70,16 @@ var run = {
             cssnano: false
         }
     },
+
     production: {
         js: {
             uglify: true
         },
         css: {
             cssnano: true
+        },
+        html: {
+            useref : true
         }
     }
 };
@@ -84,6 +94,11 @@ var plugin = {
                 mangle: true
             }
         },
+        css: {
+            autoprefixer : {
+                browsers: ['last 2 versions'],
+            }
+        },
         lint: {
             eslint: {
                 configFile: ".eslintrc",
@@ -91,6 +106,7 @@ var plugin = {
             }
         }
     },
+
     development: {
         js: {
             uglify: {
@@ -104,6 +120,7 @@ var plugin = {
             }
         }
     },
+
     production: {
         js: {
             uglify: {
@@ -116,7 +133,7 @@ var plugin = {
 
 /*************** Exports ***************/
 
-
+// How to set : --env=[name]
 var env = gutil.env.env || 'development';
 
 
