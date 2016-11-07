@@ -4,7 +4,7 @@
   "description": "Starter project following (I hope) the best practices when using gulp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp build --env=production"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "require-dir": "^0.3.1",
     "stylefmt": "^4.3.1",
     "stylelint": "^7.5.0",
-    "stylelint-config-standard": "^14.0.0"
+    "stylelint-config-standard": "^14.0.0",
+    "undertaker-forward-reference": "^1.0.1"
   }
 }
