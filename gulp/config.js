@@ -13,6 +13,7 @@ var paths = {
         css : ['css/**/*.css'],
         js: ['js/**/*.js'],
         images: ['img/**/*'],
+        assets: ['assets/**/*']
     },
     dest: {
         html: '',
@@ -20,6 +21,7 @@ var paths = {
         sass: 'scss/',
         js: 'js/',
         images: 'img/',
+        assets: 'assets/'
     },
 }
 
