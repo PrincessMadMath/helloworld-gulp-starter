@@ -1,0 +1,9 @@
+/* Very useful comment telling the next rule set the color of the header  */
+
+h1 {
+  display: -ms-flexbox;
+  display: flex;
+  width: 10px;
+  height: 10px;
+  color: #00f;
+}

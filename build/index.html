@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Countdown 24 ans!</title>
+  <!-- build:css css/combined.css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- endbuild -->
+</head>
+
+<body>
+  <h1>
+    <u>Simple Countdown!</u>
+  </h1>
+  <div id="clockdiv">
+    <div>
+      <span class="days"></span>
+      <div class="smalltext">Jours</div>
+    </div>
+    <div>
+      <span class="hours"></span>
+      <div class="smalltext">Heures</div>
+    </div>
+    <div>
+      <span class="minutes"></span>
+      <div class="smalltext">Minutes</div>
+    </div>
+    <div>
+      <span class="seconds"></span>
+      <div class="smalltext">Secondes</div>
+    </div>
+    <div>
+      <span class="centiseconds"></span>
+      <div class="smalltext">Centisecondes</div>
+    </div>
+  </div>
+  <div class="hint">
+      Autre texte
+  </div>
+  <audio id="final" controls autoplay loop>
+    <source src="assets/audio/finalcountdown.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+  </audio>
+  <audio id="happy" controls loop>
+    <source src="assets/audio/birthday_song.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+  </audio>
+</body>
+<!-- build:js scripts/combined.js -->
+<script src="js/countdown.js"></script>
+<!-- endbuild -->
+
+</html>
