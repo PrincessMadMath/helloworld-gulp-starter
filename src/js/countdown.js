@@ -2,7 +2,7 @@
 
 var timeInMinutes = 10;
 var currentTime = Date.parse(new Date());
-var deadline = new Date(currentTime + timeInMinutes*60*1000);
+var deadline = new Date(currentTime + timeInMinutes * 60 * 1000);
 
 
 /********* Calculate remaining time *********/

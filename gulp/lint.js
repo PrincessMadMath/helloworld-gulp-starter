@@ -35,10 +35,10 @@ gulp.task('lint:watch', gulp.series('lint', watchLint));
 
 /*************** Function to lint js ***************/
 
-function jsLint(){
+function jsLint() {
     var glob = config.prefixGlob(config.paths.src, config.paths.glob.js);
     var dest = config.paths.src + config.paths.dest.js;
-    
+
     return gulp.src(glob)
         .pipe(eslint(config.plugin.lint.eslint))
         .pipe(eslint.format())
@@ -57,31 +57,35 @@ function jsLint(){
 var processors = [
     stylefmt,
     sorting,
-    stylelint({failAfterError: true}),
-    reporter({ clearMessages: true }),
+    stylelint({
+        failAfterError: true
+    }),
+    reporter({
+        clearMessages: true
+    }),
 ];
 
-function cssLint(){
+function cssLint() {
     var glob = config.prefixGlob(config.paths.src, config.paths.glob.css);
     var dest = config.paths.src + config.paths.dest.css;
 
     return gulp.src(glob)
-    .pipe(postcss(processors))
-    .pipe(changed(dest))
-    .pipe(gulp.dest(dest));
+        .pipe(postcss(processors))
+        .pipe(changed(dest))
+        .pipe(gulp.dest(dest));
 }
 
 
-function sassLint(){
+function sassLint() {
     var glob = config.prefixGlob(config.paths.src, config.paths.glob.sass);
     var dest = config.paths.src + config.paths.dest.sass;
 
     return gulp.src(glob)
-    .pipe(postcss(processors, {
-        syntax: syntax_scss
-    }))
-    .pipe(changed(dest))
-    .pipe(gulp.dest(dest));
+        .pipe(postcss(processors, {
+            syntax: syntax_scss
+        }))
+        .pipe(changed(dest))
+        .pipe(gulp.dest(dest));
 }
 
 
@@ -93,5 +97,5 @@ function watchLint() {
 
     gulp.watch(js_glob, jsLint);
     gulp.watch(css_glob, cssLint);
-    gulp.watch(sass_glob,  sassLint);
+    gulp.watch(sass_glob, sassLint);
 }

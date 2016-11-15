@@ -40,7 +40,7 @@ function watchServer() {
     gulp.watch(js_glob, reload);
     gulp.watch(image_glob, reload);
     gulp.watch(css_glob, injectCss);
-    gulp.watch(assets_glob,  reload);
+    gulp.watch(assets_glob, reload);
 }
 
 /*************** Browsersync helper function ***************/

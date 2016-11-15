@@ -11,14 +11,14 @@ var paths = {
     glob: {
         html: ['**/*.html'],
         sass: ['scss/**/*.scss'],
-        css : ['css/**/*.css'],
+        css: ['css/**/*.css'],
         js: ['js/**/*.js'],
         images: ['img/**/*'],
         assets: ['assets/**/*']
     },
     dest: {
         html: '',
-        css : 'css/',
+        css: 'css/',
         sass: 'scss/',
         js: 'js/',
         images: 'img/',
@@ -27,9 +27,9 @@ var paths = {
 }
 
 // Todo: this should but not calculated at runtime...
-function prefixGlob(prefix, glob){
-    return glob.map(function(el) { 
-        return prefix + el; 
+function prefixGlob(prefix, glob) {
+    return glob.map(function (el) {
+        return prefix + el;
     })
 }
 
@@ -58,10 +58,10 @@ var run = {
         },
         css: {
             cssnano: false,
-            autoprefixer : true,
+            autoprefixer: true,
         },
         html: {
-            useref : false
+            useref: false
         }
     },
 
@@ -82,7 +82,7 @@ var run = {
             cssnano: true
         },
         html: {
-            useref : true
+            useref: true
         }
     }
 };
@@ -98,7 +98,7 @@ var plugin = {
             }
         },
         css: {
-            autoprefixer : {
+            autoprefixer: {
                 browsers: ['last 2 versions'],
             }
         },
@@ -113,7 +113,7 @@ var plugin = {
     development: {
         js: {
             uglify: {
-                
+
                 mangle: false
             }
         },
@@ -141,9 +141,9 @@ var env = gutil.env.env || 'development';
 
 
 // Merge 
-var runOpts = _.merge( {}, run.default, run[ env ] );
-var pluginOpts = _.merge( {}, plugin.default, plugin[ env ] );
-var constantsOpts = _.merge( {}, constants.default, constants[ env ]);
+var runOpts = _.merge({}, run.default, run[env]);
+var pluginOpts = _.merge({}, plugin.default, plugin[env]);
+var constantsOpts = _.merge({}, constants.default, constants[env]);
 
 module.exports.constants = constantsOpts;
 module.exports.run = runOpts;
