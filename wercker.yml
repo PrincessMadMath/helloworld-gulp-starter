@@ -1,0 +1,17 @@
+box: node
+
+build:
+
+  steps:
+    # A step that executes `npm install` command
+    - npm-install
+
+    # Execute "npm build"
+    - maxon/npm-run:
+            script: build
+
+deploy:
+  steps:
+    - lukevivier/gh-pages:
+        token: $GIT_TOKEN
+        basedir: build
