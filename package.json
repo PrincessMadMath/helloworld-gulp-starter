@@ -4,7 +4,8 @@
   "description": "Starter project following (I hope) the best practices when using gulp",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build --env=production"
+    "build": "gulp build --env=production",
+    "deploy" : "npm run build&&gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "autoprefixer": "^6.5.1",
     "browser-sync": "^2.17.3",
     "del": "^2.2.2",
+    "gh-pages": "^0.11.0",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-changed": "^1.3.2",

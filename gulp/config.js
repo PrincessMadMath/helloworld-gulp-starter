@@ -6,6 +6,7 @@ var gutil = require('gulp-util')
 var paths = {
     src: "src/",
     temp: ".temp/",
+    // Changing the dist folder name also required change in .gitignore and the npm deploy scripts
     dist: "build/",
     glob: {
         html: ['**/*.html'],
