@@ -1,8 +1,8 @@
-$primary-color: #00ecb9;
+$primary-color: #aaecb9;
 
 body {
   text-align: center;
-  background: #00ecb9;
+  background: $primary-color;
   font-family: sans-serif;
   font-weight: 100;
 }

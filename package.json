@@ -1,7 +1,7 @@
 {
   "name": "gulp-starter",
   "version": "1.0.0",
-  "description": "Starter project following (I hope) the best practices when using gulp",
+  "description": "Simple template for static web site using the task-runner gulp (with focus on good pratices). Uses lots of sweet gulp-plugin to make the development easier.",
   "main": "index.js",
   "scripts": {
     "build": "gulp build --env=production",
