@@ -1,3 +1,5 @@
+This branch add support for Wercker: on push will build and push on gh-pages.
+
 # Static Site Gulp Starter Pack
 
 Simple template for static web site using the task-runner gulp (with focus on good pratices). Uses lots of sweet 
@@ -84,7 +86,7 @@ Linting plugins:
 * Add testing
 
 
-# Require some setup on wercker
+# Additionnal required setup on wercker
 
 1. Add steps in workflow
-2. Add the $GIT_TOKEN
+2. Add the $GIT_TOKEN in the steps
